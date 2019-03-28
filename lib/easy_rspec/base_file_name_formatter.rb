@@ -6,13 +6,17 @@ module EasyRspec
     end
 
     def format
-      formatted_file_name_components.join('/')
+      "#{formatted_file_name}.rb"
     end
 
     private
 
     def stringify_klass_name(klass_name)
       klass_name == Class ? klass_name.name : klass_name.to_s
+    end
+
+    def formatted_file_name
+      formatted_file_name_components.join('/')
     end
 
     def formatted_file_name_components

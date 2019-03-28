@@ -7,7 +7,6 @@ module EasyRspec
     end
 
     def file_path
-      binding.pry
       matching_file_paths.one? ? matching_file_paths.first : nil
     end
 
@@ -22,7 +21,7 @@ module EasyRspec
     end
 
     def app_file_paths
-      Find.find('app/').select { |file| File.extname(file) == FileExtensions::RUBY }
+      Find.find('app/').select { |file| File.extname(file) == '.rb' }
     end
 
   end
