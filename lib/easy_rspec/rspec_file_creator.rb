@@ -6,42 +6,53 @@ module EasyRspec
     end
 
     def create
-      #create_directory and
-      create_rspec_file
+      #raise "File already exists" if File.file?(rspec_file_path)
+      create_directory and create_rspec_file and rspec_file_contents
     end
 
     private
 
     def create_directory
-      FileUtils.mkdir_p target_directory
+      FileUtils.mkdir_p rspec_directory
     end
 
     def create_rspec_file
-      FileUtils.mkdir_p 'spec/blah'
-      File.new("spec/#{formatted_file_path}", 'w')
-      File.open("spec/#{formatted_file_path}", "w+") do |f|
-        f.write("class Rspec::Testing\nAnotherTest" + "\n  AndAnother")
+      File.new(rspec_file_path, 'w')
+    end
+
+    def rspec_file_contents
+      File.open(rspec_file_path, "w+") do |f|
+        f.write("describe #{@klass_name}, type: :model do")
+        f.write("\nend")
       end
     end
 
-    def testable_file_path
-      @testable_file_path ||= EasyRspec::FilePathFinder.new(@klass_name).file_path
+    def methods
+      @klass.try(:classify).instance_methods - Object.instance_methods
     end
 
-    def target_directory
-      "spec/#{formatted_directory_path}"
+    def file_path
+      @file_path ||= EasyRspec::FilePathFinder.new(@klass_name).file_path
     end
 
     def base_file_name
-      EasyRspec::BaseFileNameFormatter.new(@klass_name).format
+      EasyRspec::BaseFileNameFormatter.new(@klass_name).format.split('/').last
     end
 
-    def formatted_file_path
-      testable_file_path.split('app/').last
+    def rspec_directory
+      directory.gsub('app/', 'spec/')
     end
 
-    def formatted_directory_path
-      formatted_file_path.split(base_file_name).first
+    def directory
+      file_path.split(base_file_name).first
+    end
+
+    def rspec_file_name
+      base_file_name.gsub('.rb', '_spec.rb')
+    end
+
+    def rspec_file_path
+      "#{rspec_directory}#{rspec_file_name}"
     end
 
   end

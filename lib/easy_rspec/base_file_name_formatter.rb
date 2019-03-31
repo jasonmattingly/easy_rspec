@@ -5,6 +5,10 @@ module EasyRspec
       @klass_name = stringify_klass_name(klass_name)
     end
 
+    def klass_name
+      @klass_name
+    end
+
     def format
       "#{formatted_file_name}.rb"
     end
@@ -20,10 +24,10 @@ module EasyRspec
     end
 
     def formatted_file_name_components
-      file_name_components.map{ |component| component.gsub(/(.)([A-Z])/,'\1_\2').downcase }
+      klass_name_components.map{ |component| component.gsub(/(.)([A-Z])/,'\1_\2').downcase }
     end
 
-    def file_name_components
+    def klass_name_components
       @klass_name.split('::')
     end
 
