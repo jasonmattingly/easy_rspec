@@ -1,14 +1,14 @@
 require 'fileutils'
 module EasyRspec
   class RspecFileBuilder
+
     def initialize(klass_name)
       @klass_name = klass_name
     end
 
     def build
-      #raise "File already exists" if File.file?(path)
-      puts original_file.path
-      puts rspec_file.path
+      return "RSpec file already exists at #{rspec_file.path}" if File.file?(rspec_file.path)
+
       FileUtils.mkdir_p rspec_file.directory
       File.new(rspec_file.path, 'w')
 
@@ -25,6 +25,8 @@ module EasyRspec
 
         f.write("\n\nend\n")
       end
+
+      "RSpec file created successfully at #{rspec_file.path}"
     end
 
     private

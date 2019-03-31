@@ -7,11 +7,38 @@ module EasyRspec
     end
 
     def file_path
-     matching_file_paths.last
-     # matching_file_paths.one? ? matching_file_paths.first : nil
+      file = if matching_file_paths.one?
+        matching_file_paths.first
+      elsif matching_file_paths.size > 1
+        user_selected_file
+      else
+        nil
+      end
+      raise "File not found" unless file.present?
+      file
     end
 
     private
+
+    def user_selected_file
+      max_index = matching_file_paths.size - 1
+      index = user_selected_index
+      if index.present? && index <= max_index
+        matching_file_paths[index]
+      else
+        nil
+      end
+    end
+
+    def user_selected_index
+      puts "\nWhich number represents your file path?\n\n"
+      matching_file_paths.each_with_index do |file_path, index|
+        puts "#{index}. #{file_path}"
+      end
+      puts "\n"
+      user_provided_index = gets.gsub(/[^\d]/, '')
+      user_provided_index.present? ? user_provided_index.to_i : nil
+    end
 
     def file_name
       "#{file_name_components.join('/')}.rb"
@@ -26,7 +53,7 @@ module EasyRspec
     end
 
     def matching_file_paths
-      app_file_paths.select{ |file_path| file_path.include? "/#{file_name}" }
+      @matching_file_paths ||= app_file_paths.select{ |file_path| file_path.include? "/#{file_name}" }
     end
 
     def app_file_paths
