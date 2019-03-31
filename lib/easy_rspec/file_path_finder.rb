@@ -7,7 +7,8 @@ module EasyRspec
     end
 
     def file_path
-      matching_file_paths.one? ? matching_file_paths.first : nil
+     matching_file_paths.last
+     # matching_file_paths.one? ? matching_file_paths.first : nil
     end
 
     private

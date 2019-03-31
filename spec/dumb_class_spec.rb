@@ -1,12 +1,5 @@
 describe DumbClass, type: :model do
 
-  describe '#stuff' do
-    context '' do
-      it '' do
-      end
-    end
-  end
-
   describe '#jason' do
     context '' do
       it '' do
@@ -14,12 +7,17 @@ describe DumbClass, type: :model do
     end
   end
 
-
-  describe '.my_class_method' do
+  describe '#stuff' do
     context '' do
       it '' do
       end
     end
   end
 
+  describe '.more_stuff' do
+    context '' do
+      it '' do
+      end
+    end
+  end
 end

@@ -8,26 +8,17 @@ module EasyRspec
     end
 
     def create
+      puts file_path
+      puts base_file_name
+      puts rspec_file_name
+      puts rspec_file_path
       #raise "File already exists" if File.file?(rspec_file_path)
-      methods
-      create_directory and create_rspec_file and rspec_file_contents
-    end
-
-    def methods
-      File.foreach(file_path) do |line|
-        if line.include? 'def'
-          if line.include? 'def self.'
-            @class_methods << line.gsub('def self.','').gsub('\n', '').strip
-          else
-            @instance_methods << line.gsub('def','').gsub('\n', '').strip
-          end
-        end
-      end
+      create_rspec_directory and create_rspec_file and rspec_file_contents
     end
 
     private
 
-    def create_directory
+    def create_rspec_directory
       FileUtils.mkdir_p rspec_directory
     end
 
@@ -38,32 +29,26 @@ module EasyRspec
     def rspec_file_contents
       File.open(rspec_file_path, "w+") do |f|
         f.write("describe #{@klass_name}, type: :model do")
-        if @instance_methods.any?
-          f.write("\n")
-          @instance_methods.each do |instance_method|
-            f.write("\n  describe '##{instance_method}' do")
-            f.write("\n    context '' do")
-            f.write("\n      it '' do")
-            f.write("\n      end")
-            f.write("\n    end")
-            f.write("\n  end")
-            f.write("\n")
-          end
+
+        file_contents.instance_methods.each do |instance_method|
+          write_method(f, "##{instance_method}")
         end
-        if @class_methods.any?
-          f.write("\n")
-          @class_methods.each do |class_method|
-            f.write("\n  describe '.#{class_method}' do")
-            f.write("\n    context '' do")
-            f.write("\n      it '' do")
-            f.write("\n      end")
-            f.write("\n    end")
-            f.write("\n  end")
-            f.write("\n")
-          end
+        file_contents.class_methods.each do |class_method|
+          write_method(f, ".#{class_method}")
         end
-        f.write("\nend")
+
+        f.write("\n\nend\n")
       end
+    end
+
+    def write_method(file, descriptor)
+      file.write("\n")
+      file.write("\n  describe '#{descriptor}' do")
+      file.write("\n    context '' do")
+      file.write("\n      it '' do")
+      file.write("\n      end")
+      file.write("\n    end")
+      file.write("\n  end")
     end
 
     def file_path
@@ -88,6 +73,14 @@ module EasyRspec
 
     def rspec_file_path
       "#{rspec_directory}#{rspec_file_name}"
+    end
+
+    def file_contents
+      @file_contents ||= FileContents.new(file_path)
+    end
+
+    def file_writer
+      @file_writer ||= FileWriter.new(rspec_file_path)
     end
 
   end
