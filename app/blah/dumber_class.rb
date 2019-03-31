@@ -1,2 +1,0 @@
-class Blah::DumberClass
-end
