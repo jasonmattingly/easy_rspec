@@ -12,28 +12,29 @@ module EasyRspec
 
     def find_contents(file_path)
       File.foreach(file_path) do |line|
+        if line_contains_class_method?(line)
+          class_methods << class_method_name(line)
+        end
         if line_contains_instance_method?(line)
-          class_methods << extracted_class_method_name(line)
-        elsif line_contains_class_method?(line)
-          instance_methods << extracted_instance_method(line)
+          instance_methods << instance_method_name(line)
         end
       end
     end
 
-    def line_contains_instance_method?(line)
-      line.include? 'def self.'
-    end
-
-    def extracted_instance_method(line)
-      line.gsub('def ','').gsub('\n', '').strip
-    end
-
     def line_contains_class_method?(line)
-      line.include? 'def '
+      line.include?('def self.')
     end
 
-    def extracted_class_method_name(line)
+    def class_method_name(line)
       line.gsub('def self.','').gsub('\n', '').strip
+    end
+
+    def line_contains_instance_method?(line)
+      !line_contains_class_method?(line) && line.include?('def ')
+    end
+
+    def instance_method_name(line)
+      line.gsub('def ','').gsub('\n', '').strip
     end
 
   end
