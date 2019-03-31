@@ -7,4 +7,5 @@ module EasyRspec
   require 'easy_rspec/rspec_file_builder.rb'
   require 'easy_rspec/file_path_finder.rb'
   require 'easy_rspec/file_contents.rb'
+  require 'easy_rspec/commandline_listener.rb'
 end
