@@ -1,6 +1,6 @@
 module EasyRspec
   class FileContents
-    attr_accessor :instance_methods, :class_methods
+    attr_reader :instance_methods, :class_methods
 
     def initialize(file_path)
       self.instance_methods = []

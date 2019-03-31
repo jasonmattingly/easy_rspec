@@ -7,15 +7,15 @@ module EasyRspec
     end
 
     def file_path
-      file = if matching_file_paths.one?
+      file_path = if matching_file_paths.one?
         matching_file_paths.first
       elsif matching_file_paths.size > 1
         user_selected_file
       else
         nil
       end
-      raise "File not found" unless file.present?
-      file
+      raise "File path not found" unless file_path.present?
+      file_path
     end
 
     private
