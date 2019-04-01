@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "easy_rspec"
+require 'fakefs/safe'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
