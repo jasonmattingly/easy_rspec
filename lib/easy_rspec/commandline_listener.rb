@@ -3,3 +3,4 @@ module Kernel
     EasyRspec::RspecFileBuilder.new(klass_name).build
   end
 end
+#
