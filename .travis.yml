@@ -9,7 +9,6 @@ before_script:
   - ./cc-test-reporter before-build
 script:
   - bundle exec rspec
-  - ./cc-test-reporter format-coverage --output coverage-formatted/codeclimate.ruby.json
 after_script:
   - ./cc-test-reporter sum-coverage coverage-formatted/codeclimate.*.json
   - ./cc-test-reporter upload-coverage
