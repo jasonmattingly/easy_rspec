@@ -1,6 +1,6 @@
 env:
   global:
-    - CC_TEST_REPORTER_ID=c750ba05254193ad183d0d1a64120f61d404dc0a61807f04be4d2b9e85bc8d92
+    - CC_TEST_REPORTER_ID=8fe14703c1d250518f810a0c66db9fb4ea2d8b0df14bb163501e45f1af8e07ff
 language: ruby
 cache: bundler
 rvm:
@@ -14,4 +14,3 @@ script:
   - bundle exec rspec
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
