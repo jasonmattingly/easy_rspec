@@ -14,7 +14,7 @@ module EasyRspec
       else
         nil
       end
-      raise "File path not found" unless file_path.present?
+      raise "File path not found" unless file_path
       file_path
     end
 
@@ -23,7 +23,7 @@ module EasyRspec
     def user_selected_file
       max_index = matching_file_paths.size - 1
       index = user_selected_index
-      if index.present? && index <= max_index
+      if index && index <= max_index
         matching_file_paths[index]
       else
         nil
@@ -37,7 +37,7 @@ module EasyRspec
       end
       puts "\n"
       user_provided_index = gets.gsub(/[^\d]/, '')
-      user_provided_index.present? ? user_provided_index.to_i : nil
+      user_provided_index ? user_provided_index.to_i : nil
     end
 
     def file_name
