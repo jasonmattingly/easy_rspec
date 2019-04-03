@@ -52,7 +52,7 @@ RSpec.describe EasyRspec::FilePathFinder do
 
         file_path_finder = EasyRspec::FilePathFinder.new(klass)
 
-        expect{ file_path_finder.file_path }.to raise_error
+        expect{ file_path_finder.file_path }.to raise_error(RuntimeError, 'File path not found')
       end
     end
   end
