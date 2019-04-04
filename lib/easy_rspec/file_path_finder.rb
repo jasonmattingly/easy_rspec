@@ -36,7 +36,7 @@ module EasyRspec
         puts "#{index}. #{file_path}"
       end
       puts "\n"
-      user_provided_index = gets.gsub(/[^\d]/, '')
+      user_provided_index = STDIN.gets.gsub(/[^\d]/, '')
       user_provided_index ? user_provided_index.to_i : nil
     end
 
