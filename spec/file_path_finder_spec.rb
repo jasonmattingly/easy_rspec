@@ -1,5 +1,5 @@
 RSpec.describe EasyRspec::FilePathFinder do
-  let(:directory){ 'app' }
+  let(:directory){ 'app/' }
   let(:klass){ 'Foo' }
   let(:subject){ EasyRspec::FilePathFinder.new(klass) }
 

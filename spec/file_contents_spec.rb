@@ -1,5 +1,5 @@
 RSpec.describe EasyRspec::FileContents do
-  let(:directory){ 'app' }
+  let(:directory){ 'app/' }
   let(:file_path){ "app/foo.rb" }
   let(:expected_instance_methods){ ['instance_method_1', 'instance_method_2'] }
   let(:expected_class_methods){ ['class_method_1', 'class_method_2'] }
