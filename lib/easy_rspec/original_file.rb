@@ -4,7 +4,7 @@ module EasyRspec
     attr_reader :klass_name
 
     def initialize(klass_name)
-      @klass_name = constantized_klass_name(klass_name)
+      @klass_name = Object.const_get(klass_name.to_s)
     end
 
     def path
@@ -17,12 +17,6 @@ module EasyRspec
 
     def name
       @name ||= path.split('/').last
-    end
-
-    private
-
-    def constantized_klass_name(klass_name)
-      Object.const_get(klass_name == Class ? klass_name.name : klass_name.to_s)
     end
 
   end
