@@ -7,7 +7,7 @@ module EasyRspec
     end
 
     def build
-      return "RSpec file already exists at #{rspec_file.path}" if File.file?(rspec_file.path)
+      raise "RSpec file already exists at #{rspec_file.path}" if File.file?(rspec_file.path)
 
       FileUtils.mkdir_p rspec_file.directory
       File.new(rspec_file.path, 'w')
