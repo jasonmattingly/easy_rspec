@@ -5,15 +5,15 @@
 
 EasyRspec allows you to build an RSpec test file from scratch with a single command. The RSpec test file will be generated with:
 * A file path mirroring the path of the file being tested.
-
+&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;**Original file path:** `app/models/users/customer.rb`
 &nbsp;&nbsp;&nbsp;&nbsp;**Generated test file path:** `spec/models/users/customer_spec.rb`
 * Correct headers describing the class being tested
-
+&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;**Original file:** `class Customer < ApplicationRecord`
 &nbsp;&nbsp;&nbsp;&nbsp;**Generated test file header:** `describe Customer, type: :model do`
 * Describe blocks for instance and class methods found in the original file
-
+&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;**Original file:**
 
     ```ruby
