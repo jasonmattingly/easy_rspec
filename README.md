@@ -49,6 +49,7 @@ EasyRspec allows you to build an RSpec test file from scratch with a single comm
           end
         end
       end
+    end
     ```
 ## Install
 ```ruby
