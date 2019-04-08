@@ -13,7 +13,7 @@ module EasyRspec
       File.new(rspec_file.path, 'w')
 
       File.open(rspec_file.path, "w+") do |f|
-        f.write("describe #{original_file.klass_name}, type: :model do")
+        f.write("describe #{original_file.klass_name} do")
 
         file_contents.instance_methods.each do |instance_method|
           write_method_spec(f, "##{instance_method}")

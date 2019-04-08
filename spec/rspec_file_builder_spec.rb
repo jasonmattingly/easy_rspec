@@ -67,7 +67,7 @@ RSpec.describe EasyRspec::RspecFileBuilder do
 
       def expected_rspec_file_contents
         """
-        describe Class, type: :model do
+        describe Class do
 
           describe '#instance_method_1' do
             context '' do
