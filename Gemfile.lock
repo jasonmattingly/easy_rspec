@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    easy_rspec (0.1.0)
+    easy_rspec (1.0.0)
 
 GEM
   remote: https://rubygems.org/
