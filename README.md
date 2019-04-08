@@ -1,6 +1,7 @@
-# EasyRspec
+# EasyRspec 
 [![Maintainability](https://api.codeclimate.com/v1/badges/25a2889cda5d88e4d9df/maintainability)](https://codeclimate.com/github/jasonmattingly/easy_rspec/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/25a2889cda5d88e4d9df/test_coverage)](https://codeclimate.com/github/jasonmattingly/easy_rspec/test_coverage)
+[![Gem Version](https://badge.fury.io/rb/easy_rspec.svg)](https://badge.fury.io/rb/easy_rspec)
 [![build status](https://travis-ci.org/jasonmattingly/easy_rspec.svg?branch=master)](https://travis-ci.org/jasonmattingly/easy_rspec)
 
 EasyRspec allows you to build an RSpec test file from scratch with a single command. The RSpec test file will be generated with:
