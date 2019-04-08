@@ -4,17 +4,19 @@
 [![build status](https://travis-ci.org/jasonmattingly/easy_rspec.svg?branch=master)](https://travis-ci.org/jasonmattingly/easy_rspec)
 
 EasyRspec allows you to build an RSpec test file from scratch with a single command. The RSpec test file will be generated with:
-* A file path mirroring the path of the file being tested.
-&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;**Original file path:** `app/models/users/customer.rb`
-&nbsp;&nbsp;&nbsp;&nbsp;**Generated test file path:** `spec/models/users/customer_spec.rb`
-* Correct headers describing the class being tested
-&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;**Original file:** `class Customer < ApplicationRecord`
-&nbsp;&nbsp;&nbsp;&nbsp;**Generated test file header:** `describe Customer, type: :model do`
-* Describe blocks for instance and class methods found in the original file
-&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;**Original file:**
+1. A file path mirroring the path of the file being tested.
+
+    **Original file path:** `app/models/users/customer.rb`
+    
+    **Generated test file path:** `spec/models/users/customer_spec.rb`
+2. Correct headers describing the class being tested
+
+    **Original file:** `class Customer < ApplicationRecord`
+    
+    **Generated test file header:** `describe Customer, type: :model do`
+3. Describe blocks for instance and class methods found in the original file
+
+    **Original file:**
 
     ```ruby
     class Customer < ApplicationRecord
@@ -31,7 +33,7 @@ EasyRspec allows you to build an RSpec test file from scratch with a single comm
       end
     end
     ```
-    &nbsp;&nbsp;&nbsp;&nbsp;**Generated test file:**
+    **Generated test file:**
     ```ruby
     describe Customer, type: :model do
       describe '#name' do
