@@ -29,7 +29,7 @@ EasyRspec allows you to build an RSpec test file from scratch with a single comm
         end
       end
 
-      def self.always_right?
+      def self.has_account?
         false
       end
     end
@@ -44,7 +44,7 @@ EasyRspec allows you to build an RSpec test file from scratch with a single comm
         end
       end
 
-      describe '.always_right?' do
+      describe '.has_account?' do
         context '' do
           it '' do
           end
